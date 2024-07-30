@@ -1,19 +1,16 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "Preserve",
+    "module": "CommonJS",
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@/env": ["./env.ts"],
-    },
-    "moduleResolution": "Bundler",
     "outDir": "dist",
     "importsNotUsedAsValues": "remove",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
