@@ -3,7 +3,10 @@ Muhammad Qureshi
 Date: 30/07/2024
 Session 1:
 Start Time: 13:25
-End Time: 14:45
+End Time: 15:15
+Session 2:
+Start Time: 18:20
+End Time:
 
 Setup Instructions:
 
