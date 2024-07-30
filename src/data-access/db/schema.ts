@@ -1,4 +1,7 @@
 import { boolean, date, pgTable, serial, varchar } from "drizzle-orm/pg-core";
+import { InferSelectModel } from "drizzle-orm";
+import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
 
 export const programs = pgTable("programs", {
     id: serial("id").primaryKey(),
@@ -8,3 +11,11 @@ export const programs = pgTable("programs", {
     bestseller: boolean("bestseller").notNull(),
     startDate: date("start_date").notNull()
 });
+
+export const programsInsertSchema = createInsertSchema(programs).and(z.object({
+    // need to overwrite - for some reason drizzle-zod doesn't infer correctly
+    learningFormats: z.string().array()
+}));
+
+export type InsertProgram = z.infer<typeof programsInsertSchema>;
+export type Program = InferSelectModel<typeof programs>;
