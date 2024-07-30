@@ -4,7 +4,8 @@
     "module": "Preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@/env": ["./env.ts"],
     },
     "moduleResolution": "Bundler",
     "outDir": "dist",
