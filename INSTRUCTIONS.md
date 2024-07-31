@@ -13,4 +13,4 @@ Before starting make sure you have `Node.js` and `pnpm` installed. You can check
 3. run `npx pnpm i`. This will install all project dependencies.
 4. run `npx pnpm run db:push`. This will setup your database (when asked if you want to execute the query shown, say yes).
 5. run `npx pnpm run db:insert` to insert the data from `example-programs.json` into your database (this step is optional).
-6. run `npx pnpm dev` and the server should start.
+6. run `npx pnpm dev` and the server should start. If you want to run test, run `npx pnpm test`.
