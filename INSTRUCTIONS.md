@@ -1,6 +1,4 @@
-Muhammad Qureshi
-
-Setup Instructions:
+# Setup Instructions:
 
 Before starting make sure you have `Node.js` and `pnpm` installed. You can check if you have Node installed by running `node --version` in the terminal which should return a version number and `pnpm` by running `npx pnpm --version` which should also return a version number. You can install Node through their website, and pnpm by running the command `npm i -g pnpm`.
 
