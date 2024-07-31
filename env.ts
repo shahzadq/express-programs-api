@@ -1,11 +1,9 @@
 import dotenv from "dotenv";
+import { ArrayElement } from "src/types";
 
 dotenv.config();
 
 const envs = ["PORT", "DATABASE_URL"] as const;
-
-type ArrayElement<ArrayType extends readonly unknown[]> =
-  ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
 
 export const env = envs
   .map((env) => {
