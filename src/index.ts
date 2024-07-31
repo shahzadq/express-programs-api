@@ -1,9 +1,12 @@
 import express from "express";
+import bodyParser from "body-parser";
 import { env } from "../env";
 import { programsRouter } from "./routers";
 import { requireUserRole } from "./middleware";
 
 const app = express();
+
+app.use(bodyParser.json());
 
 app.use(
   "/api/programs",

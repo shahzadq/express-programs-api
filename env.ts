@@ -2,13 +2,19 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-if (typeof process.env.PORT === "undefined")
-  throw new Error("You need to set a PORT in .env");
+const envs = ["PORT", "DATABASE_URL"] as const;
 
-if (typeof process.env.DATABASE_URL === "undefined")
-  throw new Error("You need to set a DATABASE_URL in .env");
+type ArrayElement<ArrayType extends readonly unknown[]> =
+  ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
 
-export const env = {
-  PORT: process.env.PORT,
-  DATABASE_URL: process.env.DATABASE_URL,
-};
+export const env = envs
+  .map((env) => {
+    if (typeof process.env[env] === "undefined")
+      throw new Error(`You need to set ${env} in .env`);
+
+    return { [env]: process.env[env] };
+  })
+  .reduce((a, v) => ({ ...a, ...v })) as Record<
+  ArrayElement<typeof envs>,
+  string
+>;
