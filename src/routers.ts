@@ -1,89 +1,69 @@
-import { Router, response, Response } from "express";
+import { Router } from "express";
 import {
   addProgram,
   deleteProgram,
   getAllPrograms,
 } from "./data-access/programs";
 import { programsInsertSchema, programsSchema } from "./data-access/db/schema";
-import { ArrayElement } from "./types";
-import { arrayIncludes } from "./utils";
+import {
+  constructErrorJson,
+  constructSuccessJson,
+  internalServerErrorJson,
+} from "./helpers/router";
 
 const programsRouter = Router();
 
-const responseStatusCodes = {
-  error: [500, 400, 401],
-  success: [200],
-} as const;
-
-type ErrorResponse = {
-  status: ArrayElement<typeof responseStatusCodes.error>;
-  message: string;
-};
-type SuccessResponse = {
-  status: ArrayElement<typeof responseStatusCodes.success>;
-  data?: object;
-};
-
-const res = ({ status, ...obj }: ErrorResponse | SuccessResponse) =>
-  response.status(status).json({
-    type: arrayIncludes(responseStatusCodes.error, status)
-      ? "Error"
-      : "Success",
-    obj,
-  });
-
-const internalServerError = res({
-  status: 500,
-  message: "Something went wrong on our end.",
-});
-
-const success = res({ status: 200 });
-
 programsRouter
   .route("/")
-  .get(async () => {
+  .get(async (req, res) => {
     try {
       const programs = await getAllPrograms();
-      return res({ status: 200, data: programs });
+      return res.status(200).json(constructSuccessJson(programs));
     } catch {
-      return internalServerError;
+      return res.status(500).json(internalServerErrorJson);
     }
   })
-  .post(async (req) => {
+  .post(async (req, res) => {
     try {
       const program = programsInsertSchema.parse(req.body);
 
       try {
         await addProgram(program);
-        return success;
+        return res.status(200).json(constructSuccessJson());
       } catch {
-        return internalServerError;
+        return res.status(500).json(internalServerErrorJson);
       }
     } catch {
-      return res({
-        status: 400,
-        message: "Input invalid. Check values provided are correct.",
-      });
+      return res
+        .status(400)
+        .json(
+          constructErrorJson(
+            "Invalid input. Check values provided are correct."
+          )
+        );
     }
   });
 
 programsRouter
   .route("/:id")
   .put(async () => {})
-  .delete(async (req) => {
+  .delete(async (req, res) => {
     try {
       const id = programsSchema.shape.id.parse(req.params.id);
       try {
         await deleteProgram(id);
-        return success;
+        return res.status(200).json(constructSuccessJson());
       } catch {
-        return internalServerError;
+        return res.status(500).json(internalServerErrorJson);
       }
     } catch {
-      return res({
-        status: 400,
-        message: "Invalid id provided. Make sure id param is a number.",
-      });
+      return res
+        .status(400)
+        .json(
+          constructErrorJson(
+            "Invalid id provided. Make sure id param is a number."
+          )
+        );
     }
   });
 
