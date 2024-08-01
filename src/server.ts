@@ -2,7 +2,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import { status } from "~/constants/router";
 import { constructErrorJson } from "~/helpers/router";
-import { requireUserRole } from "~/middleware";
+import { requireUserRole } from "~/middlewares/authorization";
 import { programsRouter } from "~/routes/programs";
 
 const app = express();

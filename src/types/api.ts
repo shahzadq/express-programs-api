@@ -1,4 +1,5 @@
 import {
+  NextFunction as ExpressNextFunction,
   Request as ExpressRequest,
   Response as ExpressResponse,
 } from "express";
@@ -14,3 +15,4 @@ export type ApiReturn = ApiErrorReturn | ApiSuccessReturn;
 
 export type Response = ExpressResponse<ApiReturn>;
 export type Request = ExpressRequest;
+export type Next = ExpressNextFunction;
