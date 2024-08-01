@@ -1,6 +1,7 @@
 import { eq } from "drizzle-orm";
+import { InsertProgram, Program } from "~/types/programs";
 import { db } from "./db";
-import { InsertProgram, Program, programs } from "./db/schema";
+import { programs } from "./db/schema";
 
 export const getAllPrograms = async () => await db.query.programs.findMany();
 

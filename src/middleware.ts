@@ -1,4 +1,6 @@
 import { NextFunction, Request, Response } from "express";
+import { status } from "./constants/router";
+import { constructErrorJson } from "./helpers/router";
 
 type UserRole = "marketing-manager" | "admin" | "other";
 
@@ -9,6 +11,8 @@ export const requireUserRole =
     if (true) {
       next();
     } else {
-      return res.status(401).json({ type: "Error", message: "Unauthorized" });
+      return res
+        .status(status.error.unauthorized)
+        .json(constructErrorJson({ message: "Unauthorized" }));
     }
   };

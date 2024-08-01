@@ -1,13 +1,16 @@
-export const constructSuccessJson = (data?: object) => ({
-  type: "Success",
-  data,
-});
+import { ApiErrorReturn, ApiSuccessReturn } from "~/types/api";
 
-export const constructErrorJson = (message: string) => ({
+export const constructSuccessJson = (
+  content?: Omit<ApiSuccessReturn, "type">
+): ApiSuccessReturn => ({ type: "Success", ...content });
+
+export const constructErrorJson = (
+  content: Omit<ApiErrorReturn, "type">
+): ApiErrorReturn => ({
   type: "Error",
-  message,
+  ...content,
 });
 
-export const internalServerErrorJson = constructErrorJson(
-  "Something went wrong on our end."
-);
+export const internalServerErrorJson = constructErrorJson({
+  message: "Something went wrong on our end.",
+});
