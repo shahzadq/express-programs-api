@@ -1,4 +1,4 @@
-import { status } from "~/constants/router";
+import { httpStatus } from "~/constants/router";
 import { internalServerErrorJson } from "~/helpers/router";
 import { Request, Response } from "~/types/api";
 
@@ -8,6 +8,8 @@ export const controller =
     try {
       return fn(req, res);
     } catch {
-      return res.status(status.error.server).json(internalServerErrorJson);
+      return res
+        .status(httpStatus.INTERNAL_SERVER_ERROR)
+        .json(internalServerErrorJson);
     }
   };

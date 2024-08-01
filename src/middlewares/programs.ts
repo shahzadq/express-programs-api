@@ -1,4 +1,4 @@
-import { status } from "~/constants/router";
+import { httpStatus } from "~/constants/router";
 import { constructErrorJson } from "~/helpers/router";
 import { programIdSchema, programsInsertSchema } from "~/schemas/programs";
 import { Next, Request, Response } from "~/types/api";
@@ -7,7 +7,7 @@ export const validateProgramId = (req: Request, res: Response, next: Next) => {
   const id = programIdSchema.safeParse(req.params.id);
 
   if (!id.success)
-    return res.status(status.error.user).json(
+    return res.status(httpStatus.BAD_REQUEST).json(
       constructErrorJson({
         message: "Invalid id param provided. Make sure id param is a number",
       })
@@ -26,7 +26,7 @@ export const validateProgramBody = (
   const program = programsInsertSchema.safeParse(req.body);
 
   if (!program.success)
-    return res.status(status.error.user).json(
+    return res.status(httpStatus.BAD_REQUEST).json(
       constructErrorJson({
         message: "Invalid input. Check values provided are correct.",
       })

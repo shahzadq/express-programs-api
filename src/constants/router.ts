@@ -1,9 +1,7 @@
-export const status = {
-  success: 200,
-  error: {
-    server: 500,
-    unauthorized: 401,
-    user: 400,
-    notFound: 404,
-  },
+export const httpStatus = {
+  OK: 200,
+  INTERNAL_SERVER_ERROR: 500,
+  UNAUTHORIZED: 401,
+  BAD_REQUEST: 400,
+  NOT_FOUND: 404,
 } as const;

@@ -1,6 +1,6 @@
 import bodyParser from "body-parser";
 import express from "express";
-import { status } from "~/constants/router";
+import { httpStatus } from "~/constants/router";
 import { constructErrorJson } from "~/helpers/router";
 import { requireUserRole } from "~/middlewares/authorization";
 import { programsRouter } from "~/routes/programs";
@@ -17,7 +17,7 @@ app.use(
 
 app.use((req, res) => {
   return res
-    .status(status.error.notFound)
+    .status(httpStatus.NOT_FOUND)
     .json(constructErrorJson({ message: "Endpoint not found" }));
 });
 

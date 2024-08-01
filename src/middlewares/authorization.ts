@@ -1,4 +1,4 @@
-import { status } from "~/constants/router";
+import { httpStatus } from "~/constants/router";
 import { constructErrorJson } from "~/helpers/router";
 import { Next, Request, Response } from "~/types/api";
 
@@ -12,7 +12,7 @@ export const requireUserRole =
       next();
     } else {
       return res
-        .status(status.error.unauthorized)
+        .status(httpStatus.UNAUTHORIZED)
         .json(constructErrorJson({ message: "Unauthorized" }));
     }
   };
