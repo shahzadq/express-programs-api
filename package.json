@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tsx watch --clear-screen=false ./src/index.ts",
     "db:push": "drizzle-kit push",
-    "db:insert": "tsx ./src/data-access/db/init.ts",
+    "db:insert": "tsx ./scripts/db.ts",
     "test": "jest"
   },
   "dependencies": {
