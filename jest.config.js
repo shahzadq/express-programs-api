@@ -5,5 +5,8 @@ module.exports = {
     testMatch: ["**/**/*.test.ts"],
     verbose: true,
     forceExit: true,
-    clearMocks: true
+    clearMocks: true,
+    moduleNameMapper: {
+      "~/(.*)": "<rootDir>/src/$1"
+    }
   };
