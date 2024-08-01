@@ -4,5 +4,6 @@ export const status = {
     server: 500,
     unauthorized: 401,
     user: 400,
+    notFound: 404,
   },
 } as const;

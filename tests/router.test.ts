@@ -1,5 +1,14 @@
 import { supertest } from ".";
 
+describe("not found", () => {
+  it("should return a 404 status code and error object", async () => {
+    const { statusCode, body } = await supertest.get("/");
+    expect(statusCode).toBe(404);
+    expect(body.type).toBe("Error");
+    expect(body.message).toBeDefined();
+  });
+});
+
 describe("programs", () => {
   describe("get all programs", () => {
     it("should return a 200 status code, have a success type and have an array in body.data", async () => {

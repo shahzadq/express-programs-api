@@ -1,4 +1,4 @@
 import initialiseSupertest from "supertest";
-import { app } from "~/index";
+import { app } from "~/server";
 
 export const supertest = initialiseSupertest(app);
