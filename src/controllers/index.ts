@@ -1,6 +1,6 @@
-import { status } from "src/constants/router";
-import { internalServerErrorJson } from "src/helpers/router";
-import { Request, Response } from "src/types/api";
+import { status } from "~/constants/router";
+import { internalServerErrorJson } from "~/helpers/router";
+import { Request, Response } from "~/types/api";
 
 export const controller =
   (fn: (req: Request, res: Response) => void) =>

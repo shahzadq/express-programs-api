@@ -1,7 +1,7 @@
-import rawExamplePrograms from "example-programs.json";
-import { db } from "src/data-access/db";
-import { programs } from "src/data-access/db/schema";
-import { Program } from "src/types/programs";
+import { db } from "~/data-access/db";
+import { programs } from "~/data-access/db/schema";
+import { Program } from "~/types/programs";
+import rawExamplePrograms from "../example-programs.json";
 
 async function main() {
   const examplePrograms = (rawExamplePrograms as Program[]).map(

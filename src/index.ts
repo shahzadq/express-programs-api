@@ -1,8 +1,8 @@
 import bodyParser from "body-parser";
 import { env } from "env";
 import express from "express";
-import { requireUserRole } from "src/middleware";
-import { programsRouter } from "src/routers/programs";
+import { requireUserRole } from "~/middleware";
+import { programsRouter } from "~/routers/programs";
 
 const app = express();
 

@@ -1,7 +1,7 @@
-import { status } from "src/constants/router";
-import { addProgram, getAllPrograms } from "src/data-access/programs";
-import { constructSuccessJson } from "src/helpers/router";
-import { withProgramData } from "src/helpers/with";
+import { status } from "~/constants/router";
+import { addProgram, getAllPrograms } from "~/data-access/programs";
+import { constructSuccessJson } from "~/helpers/router";
+import { withProgramData } from "~/helpers/with";
 import { controller } from ".";
 
 export const getController = controller(async (req, res) => {

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { status } from "./constants/router";
-import { constructErrorJson } from "./helpers/router";
+import { status } from "~/constants/router";
+import { constructErrorJson } from "~/helpers/router";
 
 type UserRole = "marketing-manager" | "admin" | "other";
 

@@ -1,7 +1,7 @@
 import { InferSelectModel } from "drizzle-orm";
-import { programs } from "src/data-access/db/schema";
-import { programsInsertSchema } from "src/schemas/programs";
 import { z } from "zod";
+import { programs } from "~/data-access/db/schema";
+import { programsInsertSchema } from "~/schemas/programs";
 
 export type InsertProgram = z.infer<typeof programsInsertSchema>;
 export type Program = InferSelectModel<typeof programs>;

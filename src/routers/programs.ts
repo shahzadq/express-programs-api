@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { deleteController } from "src/controllers/program";
-import { getController, postController } from "src/controllers/programs";
+import { deleteController } from "~/controllers/program";
+import { getController, postController } from "~/controllers/programs";
 
 const programsRouter = Router();
 

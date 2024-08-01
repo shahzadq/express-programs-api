@@ -1,4 +1,4 @@
-import { ApiErrorReturn, ApiSuccessReturn } from "src/types/api";
+import { ApiErrorReturn, ApiSuccessReturn } from "~/types/api";
 
 export const constructSuccessJson = (
   content?: Omit<ApiSuccessReturn, "type">
