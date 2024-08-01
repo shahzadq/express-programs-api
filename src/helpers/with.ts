@@ -1,7 +1,7 @@
-import { status } from "~/constants/router";
-import { programIdSchema, programsInsertSchema } from "~/schemas/programs";
-import { Request, Response } from "~/types/api";
-import { InsertProgram } from "~/types/programs";
+import { status } from "src/constants/router";
+import { programIdSchema, programsInsertSchema } from "src/schemas/programs";
+import { Request, Response } from "src/types/api";
+import { InsertProgram } from "src/types/programs";
 import { constructErrorJson } from "./router";
 
 export const withProgramData =

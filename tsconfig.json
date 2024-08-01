@@ -10,11 +10,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "~/*": ["src/*"],
-      "~/env": ["./env.ts"]
-    }
+    "resolveJsonModule": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

@@ -1,6 +1,7 @@
+import rawExamplePrograms from "example-programs.json";
+import { Program } from "src/types/programs";
 import { db } from ".";
-import rawExamplePrograms from "../../../example-programs.json";
-import { Program, programs } from "./schema";
+import { programs } from "./schema";
 
 async function main() {
   const examplePrograms = (rawExamplePrograms as Program[]).map(
