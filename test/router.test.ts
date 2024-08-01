@@ -1,7 +1,4 @@
-import initialiseSupertest from "supertest";
-import { app } from ".";
-
-const supertest = initialiseSupertest(app);
+import { supertest } from ".";
 
 describe("programs", () => {
   describe("get all programs", () => {

@@ -1,7 +1,7 @@
 import { status } from "~/constants/router";
-import { deleteProgram, updateProgram } from "~/data-access/programs";
 import { constructSuccessJson } from "~/helpers/router";
 import { withProgramData, withProgramId } from "~/helpers/with";
+import { deleteProgram, updateProgram } from "~/services/programs";
 import { controller } from ".";
 
 export const deleteController = controller(

@@ -1,7 +1,7 @@
 import { status } from "~/constants/router";
-import { addProgram, getAllPrograms } from "~/data-access/programs";
 import { constructSuccessJson } from "~/helpers/router";
 import { withProgramData } from "~/helpers/with";
+import { addProgram, getAllPrograms } from "~/services/programs";
 import { controller } from ".";
 
 export const getController = controller(async (req, res) => {

@@ -2,7 +2,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import { env } from "~/env";
 import { requireUserRole } from "~/middleware";
-import { programsRouter } from "~/routers/programs";
+import { programsRouter } from "~/routes/programs";
 
 const app = express();
 

@@ -1,5 +1,5 @@
-import { db } from "~/data-access/db";
-import { programs } from "~/data-access/db/schema";
+import { programs } from "~/models/programs";
+import { db } from "~/services/db";
 import { Program } from "~/types/programs";
 import rawExamplePrograms from "../example-programs.json";
 
