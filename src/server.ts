@@ -1,24 +1,18 @@
 import bodyParser from "body-parser";
 import express from "express";
-import { httpStatus } from "~/constants/router";
-import { constructErrorJson } from "~/helpers/router";
-import { requireUserRole } from "~/middlewares/authorization";
-import { programsRouter } from "~/routes/programs";
+import { httpStatus } from "~/constants/api";
+import { router as programs } from "~/programs";
 
 const app = express();
 
 app.use(bodyParser.json());
 
-app.use(
-  "/api/programs",
-  requireUserRole(["admin", "marketing-manager"]),
-  programsRouter
-);
+app.use("/api/v1/programs", programs);
 
-app.use((req, res) => {
-  return res
+app.use((req, res) =>
+  res
     .status(httpStatus.NOT_FOUND)
-    .json(constructErrorJson({ message: "Endpoint not found" }));
-});
+    .json({ type: "error", message: "Endpoint not found." })
+);
 
 export { app };
