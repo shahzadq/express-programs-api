@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ZodSchema } from "zod";
-import { httpStatus } from "~/constants/api";
+import { ApiError } from "~/errors";
 
 type ValidationOptions = {
   toLocalsKey?: string;
@@ -12,8 +12,8 @@ export const validateBody =
     const { data, success } = schema.safeParse(req.body);
 
     if (!success)
-      return res.status(httpStatus.BAD_REQUEST).json({
-        type: "error",
+      throw new ApiError({
+        status: "BAD_REQUEST",
         message: "Invalid input. Check values provided are of correct type.",
       });
 
@@ -29,8 +29,8 @@ export const validateParam =
     const { data, success } = schema.safeParse(req.params[param]);
 
     if (!success)
-      return res.status(httpStatus.BAD_REQUEST).json({
-        type: "error",
+      throw new ApiError({
+        status: "BAD_REQUEST",
         message: `Invalid ${param} param provided. Make sure param is of correct type.`,
       });
 
