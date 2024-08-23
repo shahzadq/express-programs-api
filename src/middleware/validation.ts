@@ -12,10 +12,12 @@ export const validateBody =
     const { data, success } = schema.safeParse(req.body);
 
     if (!success)
-      throw new ApiError({
-        status: "BAD_REQUEST",
-        message: "Invalid input. Check values provided are of correct type.",
-      });
+      next(
+        new ApiError({
+          status: "BAD_REQUEST",
+          message: "Invalid input. Check values provided are of correct type.",
+        })
+      );
 
     if (typeof options?.toLocalsKey !== "undefined")
       res.locals[options.toLocalsKey] = data;
@@ -29,10 +31,12 @@ export const validateParam =
     const { data, success } = schema.safeParse(req.params[param]);
 
     if (!success)
-      throw new ApiError({
-        status: "BAD_REQUEST",
-        message: `Invalid ${param} param provided. Make sure param is of correct type.`,
-      });
+      next(
+        new ApiError({
+          status: "BAD_REQUEST",
+          message: `Invalid ${param} param provided. Make sure param is of correct type.`,
+        })
+      );
 
     if (typeof options?.toLocalsKey !== "undefined")
       res.locals[options.toLocalsKey] = data;
