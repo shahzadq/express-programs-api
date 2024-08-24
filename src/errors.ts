@@ -1,6 +1,6 @@
-import { httpErrorStatus } from "./constants/api";
+import { httpErrorStatusCodes } from "./constants/api";
 
-type ErrorStatusCodes = keyof typeof httpErrorStatus;
+type ErrorStatusCodes = keyof typeof httpErrorStatusCodes;
 
 export class ApiError extends Error {
   status: ErrorStatusCodes;

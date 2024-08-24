@@ -4,13 +4,11 @@ import { ApiError } from "~/errors";
 
 type ValidationOptions = {
   toLocalsKey?: string;
-  error?: {
-    message?: string;
-  };
+  error?: Partial<ApiError>;
 };
 
 export const validateBody =
-  (schema: ZodSchema, options?: ValidationOptions) =>
+  (schema: ZodSchema, options: ValidationOptions) =>
   (req: Request, res: Response, next: NextFunction) => {
     const { data, success } = schema.safeParse(req.body);
 
@@ -18,9 +16,8 @@ export const validateBody =
       return next(
         new ApiError({
           status: "BAD_REQUEST",
-          message:
-            options?.error?.message ??
-            "Invalid body. Check values provided are of correct type.",
+          message: "Invaild body. Check values provided are of correct type.",
+          ...options?.error,
         })
       );
 
@@ -39,9 +36,8 @@ export const validateParam =
       return next(
         new ApiError({
           status: "BAD_REQUEST",
-          message:
-            options?.error?.message ??
-            `Invalid ${param} param provided. Make sure param is of correct type.`,
+          message: `Invalid ${param} param provided. Make sure param is of correct type.`,
+          ...options?.error,
         })
       );
 

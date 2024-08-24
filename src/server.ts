@@ -1,6 +1,6 @@
 import bodyParser from "body-parser";
 import express, { NextFunction, Request, Response } from "express";
-import { httpStatus } from "~/constants/api";
+import { httpStatusCodes } from "~/constants/api";
 import { ApiError } from "~/errors";
 import { router } from "~/routers";
 
@@ -21,9 +21,8 @@ app.use((req, res, next) => {
 
 app.use((err: ApiError, req: Request, res: Response, next: NextFunction) => {
   err = err instanceof ApiError ? err : new ApiError();
-
   return res
-    .status(httpStatus[err.status])
+    .status(httpStatusCodes[err.status])
     .json({ type: "error", message: err.message });
 });
 
