@@ -1,5 +1,4 @@
-import { Response } from "express";
-import { httpErrorStatus, httpStatus } from "./constants/api";
+import { httpErrorStatus } from "./constants/api";
 
 type ErrorStatusCodes = keyof typeof httpErrorStatus;
 
@@ -23,9 +22,3 @@ export class ApiError extends Error {
     this.status = status;
   }
 }
-
-export const handleError = (err: ApiError, res: Response) => {
-  return res
-    .status(httpStatus[err.status])
-    .json({ type: "error", message: err.message });
-};

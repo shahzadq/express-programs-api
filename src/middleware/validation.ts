@@ -4,6 +4,9 @@ import { ApiError } from "~/errors";
 
 type ValidationOptions = {
   toLocalsKey?: string;
+  error?: {
+    message?: string;
+  };
 };
 
 export const validateBody =
@@ -12,10 +15,12 @@ export const validateBody =
     const { data, success } = schema.safeParse(req.body);
 
     if (!success)
-      next(
+      return next(
         new ApiError({
           status: "BAD_REQUEST",
-          message: "Invalid input. Check values provided are of correct type.",
+          message:
+            options?.error?.message ??
+            "Invalid body. Check values provided are of correct type.",
         })
       );
 
@@ -31,10 +36,12 @@ export const validateParam =
     const { data, success } = schema.safeParse(req.params[param]);
 
     if (!success)
-      next(
+      return next(
         new ApiError({
           status: "BAD_REQUEST",
-          message: `Invalid ${param} param provided. Make sure param is of correct type.`,
+          message:
+            options?.error?.message ??
+            `Invalid ${param} param provided. Make sure param is of correct type.`,
         })
       );
 
