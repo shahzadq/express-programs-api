@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { ApiError } from "~/errors";
+import { ApiError } from "~/v3/errors";
 
 type Role = "marketing-manager" | "admin" | "other";
 

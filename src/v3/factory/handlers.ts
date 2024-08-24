@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { httpSuccessStatus } from "~/constants/api";
-import { ApiError } from "~/errors";
+import { httpSuccessStatus } from "~/v3/constants/api";
+import { ApiError } from "~/v3/errors";
 
 type Success = {
   type: "success";

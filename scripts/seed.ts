@@ -1,6 +1,6 @@
 import { programs } from "~/models/programs";
-import { db } from "~/services/db";
 import { Program } from "~/types/programs";
+import { db } from "~/v3/services/db";
 import rawExamplePrograms from "../example-programs.json";
 
 async function main() {

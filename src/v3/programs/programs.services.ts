@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import { db } from "~/services/db";
+import { db } from "~/v3/services/db";
 import { programs } from "./programs.schemas";
 import { InsertProgram, Program } from "./programs.types";
 

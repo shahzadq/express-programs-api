@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { requireUserRole } from "~/users/users.middleware";
+import { requireUserRole } from "~/v3/users/users.middleware";
 import { param } from "./programs.constants";
 import {
   addProgram,

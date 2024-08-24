@@ -1,4 +1,4 @@
-import { validateBody, validateParam } from "~/middleware/validation";
+import { validateBody, validateParam } from "~/v3/middleware/validation";
 import { programIdSchema, programsInsertSchema } from "./programs.schemas";
 
 export const validateProgramBody = validateBody(programsInsertSchema, {
