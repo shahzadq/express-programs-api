@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ZodSchema } from "zod";
-import { ApiError } from "~/v3/errors";
+import { ApiError } from "~/errors";
 
 type ValidationOptions = {
   toLocalsKey?: string;

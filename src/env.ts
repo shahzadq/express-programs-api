@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { ArrayElement } from "~/v3/types";
+import { ArrayElement } from "~/types";
 
 dotenv.config();
 

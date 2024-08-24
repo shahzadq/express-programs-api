@@ -1,14 +1,14 @@
 import bodyParser from "body-parser";
 import express, { NextFunction, Request, Response } from "express";
-import { router as programs } from "~/v3/programs";
-import { httpStatus } from "./constants/api";
-import { ApiError } from "./errors";
+import { httpStatus } from "~/constants/api";
+import { ApiError } from "~/errors";
+import { router } from "~/routers";
 
 const app = express();
 
 app.use(bodyParser.json());
 
-app.use("/api/v1/programs", programs);
+app.use("/api/v1", router);
 
 app.use((req, res, next) => {
   return next(

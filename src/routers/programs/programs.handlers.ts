@@ -1,4 +1,4 @@
-import { createHandler } from "~/v3/factory/handlers";
+import { createHandler } from "~/factory/handlers";
 import { requireProgramIdLocal, requireProgramLocal } from "./programs.helpers";
 import * as services from "./programs.services";
 
