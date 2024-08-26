@@ -1,7 +1,8 @@
 import { validateBody, validateParam } from "~/middleware/validation";
 import { programIdSchema, programsInsertSchema } from "./programs.schemas";
 
-export const validateProgramBody = validateBody(programsInsertSchema, {
+export const validateProgramBody = validateBody({
+  schema: programsInsertSchema,
   toLocalsKey: "program",
   error: {
     message:
@@ -9,7 +10,9 @@ export const validateProgramBody = validateBody(programsInsertSchema, {
   },
 });
 
-export const validateProgramId = validateParam("programId", programIdSchema, {
+export const validateProgramId = validateParam({
+  schema: programIdSchema,
+  param: "programId",
   toLocalsKey: "programId",
   error: {
     message:

@@ -1,9 +1,9 @@
 import { httpErrorStatusCodes } from "./constants/api";
 
-type ErrorStatusCodes = keyof typeof httpErrorStatusCodes;
+type ErrorStatus = keyof typeof httpErrorStatusCodes;
 
 export class ApiError extends Error {
-  status: ErrorStatusCodes;
+  status: ErrorStatus;
 
   constructor(
     {
@@ -11,7 +11,7 @@ export class ApiError extends Error {
       status,
     }: {
       message: string;
-      status: ErrorStatusCodes;
+      status: ErrorStatus;
     } = {
       message:
         "Something went wrong on our end. Try calling this endpoint again.",

@@ -3,12 +3,13 @@ import { ZodSchema } from "zod";
 import { ApiError } from "~/errors";
 
 type ValidationOptions = {
+  schema: ZodSchema;
   toLocalsKey?: string;
   error?: Partial<ApiError>;
 };
 
 export const validateBody =
-  (schema: ZodSchema, options: ValidationOptions) =>
+  ({ schema, ...options }: ValidationOptions) =>
   (req: Request, res: Response, next: NextFunction) => {
     const { data, success } = schema.safeParse(req.body);
 
@@ -28,7 +29,7 @@ export const validateBody =
   };
 
 export const validateParam =
-  (param: string, schema: ZodSchema, options?: ValidationOptions) =>
+  ({ schema, param, ...options }: ValidationOptions & { param: string }) =>
   (req: Request, res: Response, next: NextFunction) => {
     const { data, success } = schema.safeParse(req.params[param]);
 
